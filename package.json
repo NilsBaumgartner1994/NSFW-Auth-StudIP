@@ -1,0 +1,51 @@
+{
+  "name": "nsfw-proxy",
+  "version": "1.0.1",
+  "description": "NodeJS Sequelize FrameWork Proxy",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "build": "rm -rf ./dist/ && webpack --mode development",
+    "doc": "./node_modules/.bin/apidoc -i src/ -i models/ -i doc/customDocumentation/ -o doc/",
+    "upload": "npm run build && npm version patch && npm publish"
+  },
+  "apidoc": {
+    "template": {
+      "forceLanguage": "en"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NilsBaumgartner1994/NSFW-Proxy.git"
+  },
+  "keywords": [
+    "sequelize",
+    "proxy",
+    "framwork"
+  ],
+  "bugs": {
+    "url": "https://github.com/NilsBaumgartner1994/NSFW-Proxy/issues"
+  },
+  "homepage": "https://github.com/NilsBaumgartner1994/NSFW-Proxy#readme",
+  "author": "Nils Baumgartner",
+  "license": "MIT",
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "node-fetch": "^2.6.1",
+    "nsfw-api": "^1.0.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
