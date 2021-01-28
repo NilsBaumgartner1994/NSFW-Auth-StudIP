@@ -25,9 +25,9 @@ export default class AuthStudIP {
     }
 
     static setRoleMapping(roleOfDozent, roleOfTutor, roleOfStudent){
-        AuthStudIP[AuthStudIP.PERM_DOZENT] = roleOfDozent;
-        AuthStudIP[AuthStudIP.PERM_TUTOR] = roleOfTutor;
-        AuthStudIP[AuthStudIP.PERM_STUDENT] = roleOfStudent;
+        AuthStudIP.roleMapping[AuthStudIP.PERM_DOZENT] = roleOfDozent;
+        AuthStudIP.roleMapping[AuthStudIP.PERM_TUTOR] = roleOfTutor;
+        AuthStudIP.roleMapping[AuthStudIP.PERM_STUDENT] = roleOfStudent;
     }
 
     static PARAM_USERNAME = "username";
