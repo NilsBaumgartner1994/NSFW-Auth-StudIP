@@ -16,17 +16,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NilsBaumgartner1994/NSFW-Proxy.git"
+    "url": "git+https://github.com/NilsBaumgartner1994/NSFW-Auth-StudIP.git"
   },
   "keywords": [
-    "sequelize",
-    "proxy",
-    "framwork"
+    "nsfw-api",
+    "auth",
+    "studip"
   ],
   "bugs": {
-    "url": "https://github.com/NilsBaumgartner1994/NSFW-Proxy/issues"
+    "url": "https://github.com/NilsBaumgartner1994/NSFW-Auth-StudIP/issues"
   },
-  "homepage": "https://github.com/NilsBaumgartner1994/NSFW-Proxy#readme",
+  "homepage": "https://github.com/NilsBaumgartner1994/NSFW-Auth-StudIP#readme",
   "author": "Nils Baumgartner",
   "license": "MIT",
   "dependencies": {
