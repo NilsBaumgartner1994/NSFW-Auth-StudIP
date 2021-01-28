@@ -1,6 +1,6 @@
 {
-  "name": "nsfw-proxy",
-  "version": "1.0.2",
+  "name": "nsfw-auth-studip",
+  "version": "1.0.0",
   "description": "NodeJS Sequelize FrameWork Proxy",
   "main": "dist/index.js",
   "scripts": {
