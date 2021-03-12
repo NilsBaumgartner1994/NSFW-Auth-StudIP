@@ -1,13 +1,12 @@
 import "regenerator-runtime/runtime.js";
 import AuthStudIP from "./AuthStudIP";
 
-const USERNAME = "xmuster";
-const PASSWORD = "xpassword";
+const credentials = require("./credentials.json");
 
 async function main(){
     let authObject = {
-        [AuthStudIP.PARAM_USERNAME]: USERNAME,
-        [AuthStudIP.PARAM_PASSWORD]: PASSWORD
+        [AuthStudIP.PARAM_USERNAME]: credentials.username,
+        [AuthStudIP.PARAM_PASSWORD]: credentials.password
     }
 
     try{
