@@ -3,10 +3,15 @@ import AuthStudIP from "./AuthStudIP";
 
 const credentials = require("./credentials.json");
 
-async function main(){
+async function rawInformationLogin(username, password){
+    let user = await AuthStudIP.authorizeAtStudIP(username,password);
+    console.log(user);
+}
+
+async function reducedInformation(username, password){
     let authObject = {
-        [AuthStudIP.PARAM_USERNAME]: credentials.username,
-        [AuthStudIP.PARAM_PASSWORD]: credentials.password
+        [AuthStudIP.PARAM_USERNAME]: username,
+        [AuthStudIP.PARAM_PASSWORD]: password
     }
 
     try{
@@ -16,6 +21,14 @@ async function main(){
         console.log("No success");
         console.log(err);
     }
+}
+
+async function main(){
+    let username = credentials.username;
+    let password = credentials.password
+
+    await rawInformationLogin(username, password)
+    await reducedInformation(username, password)
 }
 
 console.log("Start Test");
