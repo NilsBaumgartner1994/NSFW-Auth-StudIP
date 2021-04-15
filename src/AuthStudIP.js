@@ -121,7 +121,7 @@ export default class AuthStudIP {
             }
 
             let additionalInformation = null; // additionalInformation = user; but was a bit overkill i think
-            return AuthConnector.getSuccessMessage(AuthStudIP.AUTH_METHOD, id, role, username, displayName, additionalInformation);
+            return AuthConnector.getSuccessMessage(AuthStudIP.AUTH_METHOD, role, id, username, displayName, additionalInformation);
         } catch (error) {
             console.log(error);
             return AuthConnector.getError(AuthConnector.ERROR_CREDENTIALS_INCORRECT);
