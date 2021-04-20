@@ -16,6 +16,7 @@ export default class AuthStudIP {
     static PERM_DOZENT = "dozent";
     static PERM_TUTOR = "tutor";
     static PERM_STUDENT = "student";
+    static PERM_AUTOR = "autor";
     static PERM_GUEST = "guest";
 
     static AUTH_METHOD = "StudIP";
@@ -26,12 +27,14 @@ export default class AuthStudIP {
         [AuthStudIP.PERM_DOZENT] : "admin",
         [AuthStudIP.PERM_TUTOR] : "moderator",
         [AuthStudIP.PERM_STUDENT] : "user",
+        [AuthStudIP.PERM_AUTOR] : "user",
         [AuthStudIP.PERM_GUEST]: "guest"
     }
 
     static setRoleMapping(roleOfDozent, roleOfTutor, roleOfStudent){
         AuthStudIP.roleMapping[AuthStudIP.PERM_DOZENT] = roleOfDozent;
         AuthStudIP.roleMapping[AuthStudIP.PERM_TUTOR] = roleOfTutor;
+        AuthStudIP.roleMapping[AuthStudIP.PERM_AUTOR] = roleOfStudent;
         AuthStudIP.roleMapping[AuthStudIP.PERM_STUDENT] = roleOfStudent;
     }
 
@@ -96,6 +99,8 @@ export default class AuthStudIP {
             let name = user.name;
             let displayName = name.given; //firstname or name.formated for fullname including title
             let perms = user.perms;
+
+            console.log(perms);
 
             let role = AuthStudIP.getRole(perms);
 
