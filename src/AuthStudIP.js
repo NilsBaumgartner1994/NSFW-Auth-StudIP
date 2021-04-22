@@ -125,7 +125,7 @@ export default class AuthStudIP {
                 id = databaseUser.id;
             }
 
-            let additionalInformation = null; // additionalInformation = user; but was a bit overkill i think
+            let additionalInformation = user; // mayby a bit overkill i think
             return AuthConnector.getSuccessMessage(AuthStudIP.AUTH_METHOD, role, id, username, displayName, additionalInformation);
         } catch (error) {
             console.log(error);
