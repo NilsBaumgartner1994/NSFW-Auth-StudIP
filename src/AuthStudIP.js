@@ -76,7 +76,7 @@ export default class AuthStudIP {
 
     static async createNewUserByUsername(modes, username, studipUser){
         if(!!AuthStudIP.CUSTOM_CREATE_USER_FUNCTION){
-            await CUSTOM_CREATE_USER_FUNCTION(models, username, studipUser);
+            await AuthStudIP.CUSTOM_CREATE_USER_FUNCTION(models, username, studipUser);
         } else {
             let user = modes.User.build({username: username, authMethod: AuthStudIP.AUTH_METHOD});
             try{
