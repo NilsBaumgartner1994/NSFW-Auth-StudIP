@@ -2,3 +2,5 @@
 node_modules/
 dist/
 src/credentials.json
+
+.DS_Store

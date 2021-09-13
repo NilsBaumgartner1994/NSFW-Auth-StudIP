@@ -13,6 +13,8 @@ export default class AuthStudIP {
     static AUTHMODE_ALLOW_ONLY_EXISTING_USERS_IN_DATABASE = 1;
     static AUTHMODE_CREATE_NEW_USERS_INTO_DATABASE_AFTER_AUTHORIZE = 2;
 
+    static CUSTOM_CREATE_USER_FUNCTION = null;
+
     static PERM_DOZENT = "dozent";
     static PERM_TUTOR = "tutor";
     static PERM_STUDENT = "student";
@@ -72,16 +74,20 @@ export default class AuthStudIP {
         return null;
     }
 
-    static async createNewUserByUsername(modes, username){
-        let user = modes.User.build({username: username, authMethod: AuthStudIP.AUTH_METHOD});
-        try{
-            await user.save();
-            return user;
-        } catch (err){
-            console.log("[AuthStudIP]: Error at creating user: "+username);
-            console.log(err);
+    static async createNewUserByUsername(modes, username, studipUser){
+        if(!!AuthStudIP.CUSTOM_CREATE_USER_FUNCTION){
+            await CUSTOM_CREATE_USER_FUNCTION(models, username, studipUser);
+        } else {
+            let user = modes.User.build({username: username, authMethod: AuthStudIP.AUTH_METHOD});
+            try{
+                await user.save();
+                return user;
+            } catch (err){
+                console.log("[AuthStudIP]: Error at creating user: "+username);
+                console.log(err);
+            }
+            return null;
         }
-        return null;
     }
 
     /**
@@ -120,7 +126,7 @@ export default class AuthStudIP {
             if(AuthStudIP.CONFIG_AUTHMODE===AuthStudIP.AUTHMODE_CREATE_NEW_USERS_INTO_DATABASE_AFTER_AUTHORIZE){
                 let databaseUser = await AuthStudIP.asyncFindUserByUsername(models, username);
                 if(!databaseUser){
-                    databaseUser = await AuthStudIP.createNewUserByUsername(models, username);
+                    databaseUser = await AuthStudIP.createNewUserByUsername(models, username, user);
                 }
                 id = databaseUser.id;
             }
